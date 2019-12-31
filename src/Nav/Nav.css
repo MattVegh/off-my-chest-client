@@ -1,0 +1,13 @@
+nav {
+    text-align: center;
+}
+
+.main-title {
+    text-decoration: none;
+    color: black;
+    font-size: 40px;
+}
+
+.link-container {
+    padding: 20px;
+}
