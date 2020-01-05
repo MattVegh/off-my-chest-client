@@ -28,19 +28,21 @@ export default class Comments extends Component {
                 post_id: this.state.post_id
             })
         })
+            
             .then(res =>
                 (!res.ok)
                     ? res.json().then(e => Promise.reject('e', e))
-                    : res.json()
+                    : window.location.reload(true)
             )
+
             .catch(error => console.log(error))
-            .then(this.refreshPage())
+
 
     }
 
     refreshPage() {
         window.location.reload(this.forceUpdate);
-    } 
+    }
 
     render() {
         console.log(this.state)
