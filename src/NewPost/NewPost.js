@@ -31,13 +31,23 @@ export default class NewPost extends Component {
                 content: this.state.content
             })
         })
-            .then(res => 
+            .then(res =>
                 (!res.ok)
-                 ? res.json().then(e => Promise.reject(e))
-                 : res.json()
-                 )
-                 .catch(error => console.log(error))
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+            )
+            .catch(error => console.log(error))
+            .then(this.sendToHome())
     }
+
+    sendToHome = () => {
+        this.props.history.push('/')
+        this.refreshPage()
+    }
+
+    refreshPage() {
+        window.location.reload(this.forceUpdate);
+    } 
 
     render() {
 
@@ -45,16 +55,16 @@ export default class NewPost extends Component {
 
         return (
             <div className='form-container'>
-            <form className='new-post-form'>
-                <div className='new-post-container'>
-                    <label htmlFor='new-post-title' >Title: </label>
-                    <input type='text' className='new-post-title' onChange={this.handleTitle}/>
-                    <label htmlFor='new-post-content' >Content: </label>
-                    <input type='text' className='new-post-content' onChange={this.handleContent}/>
-                </div>
+                <form className='new-post-form'>
+                    <div className='new-post-container'>
+                        <label htmlFor='new-post-title' >Title: </label>
+                        <input type='text' className='new-post-title' onChange={this.handleTitle} />
+                        <label htmlFor='new-post-content' >Content: </label>
+                        <input type='text' className='new-post-content' onChange={this.handleContent} />
+                    </div>
                     <button className='post-btn' onClick={(event) => this.postPost(event)}>Post</button>
-            </form>
+                </form>
             </div>
-                    )
-                }
-            }
+        )
+    }
+}

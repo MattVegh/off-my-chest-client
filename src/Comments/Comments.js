@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import './Comments.css'
-//import sampleData from '../sample-data'
-
 
 export default class Comments extends Component {
     state = {
@@ -36,15 +34,13 @@ export default class Comments extends Component {
                     : res.json()
             )
             .catch(error => console.log(error))
-            .then(this.getUpdatedComments())
+            .then(this.refreshPage())
 
     }
 
-    getUpdatedComments = () => {
-        fetch('http://localhost:8000/comments')
-                .then(response => response.json())
-                .then((responseJson) => console.log('get repsonse', responseJson))
-    }
+    refreshPage() {
+        window.location.reload(this.forceUpdate);
+    } 
 
     render() {
         console.log(this.state)
