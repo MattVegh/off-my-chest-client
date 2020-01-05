@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import './App.css'
-import { Route, withRouter } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Nav from './Nav/Nav'
 import AllPosts from './AllPosts/AllPosts'
 import Post from './Post/Post'
 import NewPost from './NewPost/NewPost'
-import sampleData from './sample-data'
+
 
 class App extends Component {
   // state = {
@@ -23,23 +23,23 @@ class App extends Component {
       fetch(`http://localhost:8000/posts`),
       fetch(`http://localhost:8000/comments`)
     ])
-    .then(([postsRes, commentsRes]) => {
-      if (!postsRes.ok)
+      .then(([postsRes, commentsRes]) => {
+        if (!postsRes.ok)
           return postsRes.json().then(e => Promise.reject(e));
-      if (!commentsRes.ok)
+        if (!commentsRes.ok)
           return commentsRes.json().then(e => Promise.reject(e));
 
-      return Promise.all([postsRes.json(), commentsRes.json()]);
-  })
-  .then(([posts, comments]) => {
-      this.setState({posts, comments});
-  })
-  .catch(error => {
-      console.error({error});
-  });
+        return Promise.all([postsRes.json(), commentsRes.json()]);
+      })
+      .then(([posts, comments]) => {
+        this.setState({ posts, comments });
+      })
+      .catch(error => {
+        console.error({ error });
+      });
   }
 
-  
+
   render() {
 
     console.log('from app', this.state)

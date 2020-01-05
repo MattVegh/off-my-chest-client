@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import './Post.css'
-//import SampleData from '../sample-data'
 import Comments from '../Comments/Comments'
 
 export default class Post extends Component {
 
+    
+
     render() {
         console.log('from post.js', this.props.posts)
         console.log('match', this.props.match.params.postId)
+        console.log('state from post', this.state)
         const findExactPost = this.props.posts.filter(post => post.id === parseInt(this.props.match.params.postId))
         const exactPost = findExactPost[0]
         console.log('find exact post', findExactPost[0])

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './NewPost.css'
-import { Link } from 'react-router-dom'
 
 export default class NewPost extends Component {
     state = {

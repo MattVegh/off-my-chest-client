@@ -11,8 +11,10 @@ export default class Comments extends Component {
 
     
     handleComment = (event) => {
+        let postId = parseInt(this.props.match.params.postId)
         this.setState({
             content: event.target.value,
+            post_id: postId
         })
     }
     
@@ -25,7 +27,7 @@ export default class Comments extends Component {
             },
             body: JSON.stringify({
                 content: this.state.content,
-                post_id: 1
+                post_id: this.state.post_id
             })
         })
         .then(res =>
@@ -35,14 +37,20 @@ export default class Comments extends Component {
             )
             .catch(error => console.log(error))
 
+            this.refreshPage()
     }
 
+    refreshPage() {
+        window.location.reload();
+    } 
+
     render() {
-        console.log(this.state.content)
-        console.log('from comments', this.props.comments)
+        console.log(this.state)
+        console.log('from comments', this.props)
         // console.log('comments match', this.props.match)
         const postComments = this.props.comments.filter(comments => comments.post_id === parseInt(this.props.match.params.postId))
-        console.log('postcomments', postComments[0].post_id)
+        
+        console.log('postcomments', postComments)
 
         return (
             <div className='comments-container'>
