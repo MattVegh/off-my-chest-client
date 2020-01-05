@@ -14,7 +14,7 @@ export default class AllPosts extends Component {
         return (
             <div className='all-posts-container'>
 
-                {posts.map(post =>
+                {posts.slice(0).reverse().map(post =>
                     <Link to={`/posts/${post.id}`} className='post-link' key={post.id}>
                         <div className='post-container'>
                             <div className='post-title'>
