@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Post.css'
-import SampleData from '../sample-data'
+//import SampleData from '../sample-data'
 import Comments from '../Comments/Comments'
 
 export default class Post extends Component {

@@ -1,21 +1,54 @@
 import React, { Component } from 'react'
 import './Comments.css'
-import { Link } from 'react-router-dom'
-import SampleData from '../sample-data'
+//import sampleData from '../sample-data'
 
 
 export default class Comments extends Component {
+    state = {
+        content: '',
+        post_id: ''
+    }
+
+    
+    handleComment = (event) => {
+        this.setState({
+            content: event.target.value,
+        })
+    }
+    
+
+    postComment = () => {
+        fetch('http://localhost:8000/comments', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                content: this.state.content,
+                post_id: 1
+            })
+        })
+        .then(res =>
+            (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res.json()
+            )
+            .catch(error => console.log(error))
+
+    }
+
     render() {
-        console.log('from comments', this.props)
-        console.log('comments match', this.props.match)
-        const postComments = this.props.comments.filter(comments => comments.postId === parseInt(this.props.match.params.postId))
-        console.log('postcomments', postComments)
+        console.log(this.state.content)
+        console.log('from comments', this.props.comments)
+        // console.log('comments match', this.props.match)
+        const postComments = this.props.comments.filter(comments => comments.post_id === parseInt(this.props.match.params.postId))
+        console.log('postcomments', postComments[0].post_id)
 
         return (
             <div className='comments-container'>
                 <div className='add-comment-container'>
-                    <input type='text' className='comment-input' />
-                    <Link to='' className='add-comment-link'>Add Comment</Link>
+                    <input type='text' className='comment-input' onChange={this.handleComment}/>
+                    <button className='add-comment-btn' onClick={() => this.postComment()}>Add Comment</button>
 
                 </div>
 

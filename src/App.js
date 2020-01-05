@@ -8,11 +8,38 @@ import NewPost from './NewPost/NewPost'
 import sampleData from './sample-data'
 
 class App extends Component {
+  // state = {
+  //   posts: sampleData.posts,
+  //   comments: sampleData.comments
+  // }
+
   state = {
-    posts: sampleData.posts,
-    comments: sampleData.comments
+    posts: [],
+    comments: [],
   }
 
+  componentDidMount() {
+    Promise.all([
+      fetch(`http://localhost:8000/posts`),
+      fetch(`http://localhost:8000/comments`)
+    ])
+    .then(([postsRes, commentsRes]) => {
+      if (!postsRes.ok)
+          return postsRes.json().then(e => Promise.reject(e));
+      if (!commentsRes.ok)
+          return commentsRes.json().then(e => Promise.reject(e));
+
+      return Promise.all([postsRes.json(), commentsRes.json()]);
+  })
+  .then(([posts, comments]) => {
+      this.setState({posts, comments});
+  })
+  .catch(error => {
+      console.error({error});
+  });
+  }
+
+  
   render() {
 
     console.log('from app', this.state)
@@ -29,7 +56,7 @@ class App extends Component {
                 comments={this.state.comments} />
             }}
             />
-    
+
             <Route path='/posts/:postId' component={(props) => {
               return <Post
                 {...props}

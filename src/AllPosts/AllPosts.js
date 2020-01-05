@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './AllPosts.css'
-import SampleData from '../sample-data'
+//import SampleData from '../sample-data'
 
 export default class AllPosts extends Component {
 
