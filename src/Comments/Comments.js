@@ -4,7 +4,8 @@ import './Comments.css'
 export default class Comments extends Component {
     state = {
         content: '',
-        post_id: ''
+        post_id: '',
+        newComment: ''
     }
 
 
@@ -28,24 +29,19 @@ export default class Comments extends Component {
                 post_id: this.state.post_id
             })
         })
-            
             .then(res =>
                 (!res.ok)
                     ? res.json().then(e => Promise.reject('e', e))
-                    : window.location.reload(true)
+                    : res.json().then(this.setState({
+                        newComment: this.state.content
+                    }))
             )
-
             .catch(error => console.log(error))
 
-
-    }
-
-    refreshPage() {
-        window.location.reload(this.forceUpdate);
     }
 
     render() {
-        console.log(this.state)
+        console.log('state in comments', this.state)
         console.log('from comments', this.props)
         // console.log('comments match', this.props.match)
         const postComments = this.props.comments.filter(comments => comments.post_id === parseInt(this.props.match.params.postId))
@@ -59,7 +55,7 @@ export default class Comments extends Component {
                     <button className='add-comment-btn' onClick={() => this.postComment()}>Add Comment</button>
 
                 </div>
-
+                <p className='comment' >{this.state.newComment}</p>
                 {postComments.slice(0).reverse().map(comments =>
                     <p className='comment' key={comments.id}>{comments.content}</p>
                 )}
