@@ -19,7 +19,7 @@ export default class Comments extends Component {
 
 
     postComment = () => {
-        fetch('http://localhost:8000/comments', {
+        fetch('https://off-my-chest-api.herokuapp.com/comments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

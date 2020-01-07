@@ -21,7 +21,7 @@ export default class NewPost extends Component {
 
     postPost = (event) => {
         event.preventDefault()
-        fetch(`http://localhost:8000/posts`, {
+        fetch(`https://off-my-chest-api.herokuapp.com/posts`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

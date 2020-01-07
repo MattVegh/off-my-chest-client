@@ -20,8 +20,8 @@ class App extends Component {
 
   componentDidMount() {
     Promise.all([
-      fetch(`http://localhost:8000/posts`),
-      fetch(`http://localhost:8000/comments`)
+      fetch(`https://off-my-chest-api.herokuapp.com/posts`),
+      fetch(`https://off-my-chest-api.herokuapp.com/comments`)
     ])
       .then(([postsRes, commentsRes]) => {
         if (!postsRes.ok)
@@ -42,7 +42,7 @@ class App extends Component {
   handleNewPost = (newPost) => {
     console.log('newpost from app', newPost)
     this.setState({
-      posts: [...this.state.posts, newPost]
+      posts: newPost
     })
     
   }
