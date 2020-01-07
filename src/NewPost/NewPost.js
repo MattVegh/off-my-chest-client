@@ -36,17 +36,24 @@ export default class NewPost extends Component {
                     ? res.json().then(e => Promise.reject(e))
                     : res.json()
             )
+            .then((post) => {
+                console.log('postpost', post)
+                this.sendToHome(post)
+                // this.props.history.push(`/posts/${post[0].id}`)
+            })
             .catch(error => console.log(error))
-            .then(this.sendToHome())
+            // .then(this.sendToHome)
     }
 
-    sendToHome = () => {
-        this.props.history.push('/')
+    sendToHome = (post) => {
+        
+        this.props.history.push(`/posts/${post[0].id}`)
     }
 
    
 
     render() {
+        
         return (
             <div className='form-container'>
                 <form className='new-post-form'>
