@@ -39,6 +39,13 @@ class App extends Component {
       });
   }
 
+  handleNewPost = (newPost) => {
+    console.log('newpost from app', newPost)
+    this.setState({
+      posts: [...this.state.posts, newPost]
+    })
+    
+  }
 
   render() {
 
@@ -68,6 +75,7 @@ class App extends Component {
               return <NewPost 
               {...props}
               posts={this.state.posts}
+              handleNewPost={this.handleNewPost}
                />
             }} />
           </main>
