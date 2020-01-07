@@ -4,8 +4,6 @@ import Comments from '../Comments/Comments'
 
 export default class Post extends Component {
 
-    
-
     render() {
         console.log('from post.js', this.props.posts)
         console.log('match', this.props.match.params.postId)
@@ -16,14 +14,17 @@ export default class Post extends Component {
         console.log('exact post', exactPost)
 
         return (
-            <div className='post-with-comments-container'>
-                <div className='exact-post-container'>
-                    <div className='post-title'>
-                        <h3>{exactPost.title}</h3>
-                    </div>
-                    <p className='post-content'>{exactPost.content}</p>
-                </div>
-                <Comments comments={this.props.comments} {...this.props}/>
+            <div>
+                {!exactPost ? <div></div> :
+                    <div className='post-with-comments-container'>
+                        <div className='exact-post-container'>
+                            <div className='post-title'>
+                                <h3>{exactPost.title}</h3>
+                            </div>
+                            <p className='post-content'>{exactPost.content}</p>
+                        </div>
+                        <Comments comments={this.props.comments} {...this.props} />
+                    </div>}
             </div>
         )
     }

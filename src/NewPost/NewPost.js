@@ -42,17 +42,11 @@ export default class NewPost extends Component {
 
     sendToHome = () => {
         this.props.history.push('/')
-        this.refreshPage()
     }
 
-    refreshPage() {
-        window.location.reload(this.forceUpdate);
-    } 
+   
 
     render() {
-
-        console.log('NewPost state', this.state)
-
         return (
             <div className='form-container'>
                 <form className='new-post-form'>

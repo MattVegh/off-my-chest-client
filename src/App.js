@@ -64,7 +64,12 @@ class App extends Component {
                 comments={this.state.comments} />
             }}
             />
-            <Route path='/newpost' component={NewPost} />
+            <Route path='/newpost' component={(props) => {
+              return <NewPost 
+              {...props}
+              posts={this.state.posts}
+               />
+            }} />
           </main>
         </div>
       </div>

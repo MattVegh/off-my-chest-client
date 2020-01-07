@@ -5,7 +5,7 @@ export default class Comments extends Component {
     state = {
         content: '',
         post_id: '',
-        newComment: ''
+        
     }
 
 
@@ -55,7 +55,7 @@ export default class Comments extends Component {
                     <button className='add-comment-btn' onClick={() => this.postComment()}>Add Comment</button>
 
                 </div>
-                <p className='comment' >{this.state.newComment}</p>
+                {!this.state.newComment ? <div></div> : <p className='comment' >{this.state.newComment}</p>}
                 {postComments.slice(0).reverse().map(comments =>
                     <p className='comment' key={comments.id}>{comments.content}</p>
                 )}
