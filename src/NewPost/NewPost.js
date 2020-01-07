@@ -38,16 +38,20 @@ export default class NewPost extends Component {
             )
             .then((post) => {
                 console.log('postpost', post)
-                this.sendToHome(post)
+                this.setState({
+                    newPost: post
+                })
+                
+                
                 // this.props.history.push(`/posts/${post[0].id}`)
             })
             .catch(error => console.log(error))
-            // .then(this.sendToHome)
+            .then(this.sendToHome)
     }
 
-    sendToHome = (post) => {
+    sendToHome = () => {
         
-        this.props.history.push(`/posts/${post[0].id}`)
+        this.props.history.push(`/posts/${this.state.newPost[0].id}`)
     }
 
    
