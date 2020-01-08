@@ -51,7 +51,7 @@ export default class Comments extends Component {
         return (
             <div className='comments-container'>
                 <div className='add-comment-container'>
-                    <input type='text' className='comment-input' onChange={this.handleComment} />
+                    <textarea type='text' className='comment-input' onChange={this.handleComment} />
                     <button className='add-comment-btn' onClick={() => this.postComment()}>Add Comment</button>
 
                 </div>

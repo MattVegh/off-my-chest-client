@@ -66,7 +66,7 @@ export default class NewPost extends Component {
                         <label htmlFor='new-post-title' >Title: </label>
                         <input type='text' className='new-post-title' onChange={this.handleTitle} />
                         <label htmlFor='new-post-content' >Content: </label>
-                        <input type='text' className='new-post-content' onChange={this.handleContent} />
+                        <textarea type='text' className='new-post-content' onChange={this.handleContent} />
                     </div>
                     <button className='post-btn' onClick={(event) => this.postPost(event)}>Post</button>
                 </form>
