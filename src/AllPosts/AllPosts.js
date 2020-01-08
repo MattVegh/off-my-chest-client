@@ -39,6 +39,11 @@ export default class AllPosts extends Component {
 
         return (
             <div className='all-posts-container'>
+                <div className='intro-container'>
+                    <p className='intro'>Off My Chest is a judgement free place where you can post what is on 
+                        your mind. Feel free to post your story for others to see and comment on, or just read
+                        through what is already here.</p>
+                </div>
 
                 {posts.slice(0).reverse().map(post =>
                     <Link to={`/posts/${post.id}`} className='post-link' key={post.id}>
