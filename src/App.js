@@ -20,8 +20,10 @@ class App extends Component {
 
   componentDidMount() {
     Promise.all([
-      fetch(`https://off-my-chest-api.herokuapp.com/posts`),
-      fetch(`https://off-my-chest-api.herokuapp.com/comments`)
+      fetch(`http://localhost:8000/posts`),
+      fetch(`http://localhost:8000/comments`)
+      //fetch(`https://off-my-chest-api.herokuapp.com/posts`),
+      //fetch(`https://off-my-chest-api.herokuapp.com/comments`)
     ])
       .then(([postsRes, commentsRes]) => {
         if (!postsRes.ok)
@@ -44,7 +46,7 @@ class App extends Component {
     this.setState({
       posts: newPost
     })
-    
+
   }
 
   render() {
@@ -72,11 +74,11 @@ class App extends Component {
             }}
             />
             <Route path='/newpost' component={(props) => {
-              return <NewPost 
-              {...props}
-              posts={this.state.posts}
-              handleNewPost={this.handleNewPost}
-               />
+              return <NewPost
+                {...props}
+                posts={this.state.posts}
+                handleNewPost={this.handleNewPost}
+              />
             }} />
           </main>
         </div>

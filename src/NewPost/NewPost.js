@@ -21,7 +21,8 @@ export default class NewPost extends Component {
 
     postPost = (event) => {
         event.preventDefault()
-        fetch(`https://off-my-chest-api.herokuapp.com/posts`, {
+        fetch(`http://localhost:8000/posts`, {
+        // fetch(`https://off-my-chest-api.herokuapp.com/posts`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -64,7 +65,7 @@ export default class NewPost extends Component {
                 <form className='new-post-form'>
                     <div className='new-post-container'>
                         <label htmlFor='new-post-title' >Title: </label>
-                        <input type='text' className='new-post-title' onChange={this.handleTitle} />
+                        <textarea type='text' className='new-post-title' onChange={this.handleTitle} />
                         <label htmlFor='new-post-content' >Content: </label>
                         <textarea type='text' className='new-post-content' onChange={this.handleContent} />
                     </div>

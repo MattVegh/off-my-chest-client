@@ -3,18 +3,29 @@
     color: black;
 }
 
+.all-posts-container {
+    font-family: 'Nunito', sans-serif;
+    width: 95%;
+    margin: auto;
+}
+
 .post-container {
+    background-color: rgb(63, 49, 82);
     margin-bottom: 20px;
-    height: 125px;
-    overflow: hidden;
-    -moz-box-shadow:    inset 0 0 10px #000000;
-    -webkit-box-shadow: inset 0 0 10px #000000;
-    box-shadow:         inset 0 0 10px #000000;
-    padding: 0 10px;
+    padding: 3px 5px;
+}
+
+.post-container:hover {
+    background-color: rgb(120, 98, 153)
 }
 
 .intro-container {
-    width: 50%;
+    font-family: 'Merriweather', serif;
+    width: 70%;
     margin: auto;
     text-align: center;
+}
+
+.post-container {
+    color: rgba(255, 255, 255, 0.87);
 }

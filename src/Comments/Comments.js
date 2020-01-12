@@ -5,7 +5,7 @@ export default class Comments extends Component {
     state = {
         content: '',
         post_id: '',
-        
+
     }
 
 
@@ -19,7 +19,8 @@ export default class Comments extends Component {
 
 
     postComment = () => {
-        fetch('https://off-my-chest-api.herokuapp.com/comments', {
+        fetch(`http://localhost:8000/comments`, {
+            //fetch('https://off-my-chest-api.herokuapp.com/comments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -55,11 +56,12 @@ export default class Comments extends Component {
                     <button className='add-comment-btn' onClick={() => this.postComment()}>Add Comment</button>
 
                 </div>
-                {!this.state.newComment ? <div></div> : <p className='comment' >{this.state.newComment}</p>}
-                {postComments.slice(0).reverse().map(comments =>
-                    <p className='comment' key={comments.id}>{comments.content}</p>
-                )}
-
+                <div className='comments'>
+                    {!this.state.newComment ? <div></div> : <p className='comment' >{this.state.newComment}</p>}
+                    {postComments.slice(0).reverse().map(comments =>
+                        <p className='comment' key={comments.id}>{comments.content}</p>
+                    )}
+                </div>
             </div>
         )
     }

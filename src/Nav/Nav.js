@@ -10,7 +10,7 @@ export default function Nav() {
                 <Link to='/' className='main-title'>Off My Chest</Link>
             </div>
             <div className='link-container'>
-                <Link to='/newpost' className='make-post-link'>New Post</Link>
+                <Link to='/newpost' className='make-post-link'>| New Post |</Link>
             </div>
         </nav>
     )

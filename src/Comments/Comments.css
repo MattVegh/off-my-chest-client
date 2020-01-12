@@ -1,0 +1,39 @@
+.comments-container {
+    font-family: 'Nunito', sans-serif;
+}
+
+.comment {
+    margin-bottom: 10px;
+    background-color: rgb(87, 55, 107);
+    padding: 10px;
+    margin: 10px;
+    white-space: pre-line;
+}
+
+.comment:nth-child(odd) {
+    background-color: rgb(63, 49, 82);
+}
+
+.add-comment-container {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.comment-input {
+    width: 500px;
+    height: 85px;
+}
+
+.add-comment-btn {
+    border-radius: 20px;
+}
+
+.comments {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    
+}
