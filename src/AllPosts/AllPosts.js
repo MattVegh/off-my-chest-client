@@ -12,10 +12,10 @@ export default class AllPosts extends Component {
     componentDidMount() {
         Promise.all([
 
-            fetch(`http://localhost:8000/posts`),
-            fetch(`http://localhost:8000/comments`)
-            //fetch(`https://off-my-chest-api.herokuapp.com/posts`),
-            //fetch(`https://off-my-chest-api.herokuapp.com/comments`)
+            // fetch(`http://localhost:8000/posts`),
+            // fetch(`http://localhost:8000/comments`)
+            fetch(`https://off-my-chest-api.herokuapp.com/posts`),
+            fetch(`https://off-my-chest-api.herokuapp.com/comments`)
         ])
             .then(([postsRes, commentsRes]) => {
                 if (!postsRes.ok)
