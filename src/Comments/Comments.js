@@ -19,8 +19,8 @@ export default class Comments extends Component {
 
 
     postComment = () => {
-        // fetch(`http://localhost:8000/comments`, {
-            fetch('https://off-my-chest-api.herokuapp.com/comments', {
+        fetch(`http://localhost:8000/comments`, {
+            // fetch('https://off-my-chest-api.herokuapp.com/comments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -39,6 +39,16 @@ export default class Comments extends Component {
             )
             .catch(error => console.log(error))
 
+            this.clearCommentInput()
+            
+    }
+
+    clearCommentInput() {
+        // let inputField = document.getElementsByClassName('comment-input')
+        // inputField.reset()
+        this.setState({
+            content: ''
+        })
     }
 
     render() {
@@ -52,7 +62,7 @@ export default class Comments extends Component {
         return (
             <div className='comments-container'>
                 <div className='add-comment-container'>
-                    <textarea type='text' className='comment-input' onChange={this.handleComment} />
+                    <textarea type='text' className='comment-input' value={this.state.content} onChange={this.handleComment} />
                     <button className='add-comment-btn' onClick={() => this.postComment()}>Add Comment</button>
 
                 </div>
