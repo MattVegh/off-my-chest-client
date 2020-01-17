@@ -24,4 +24,10 @@
 
 .post-btn {
   border-radius: 20px;
+  width: 6%;
+}
+
+.post-btn:hover {
+  color: white;
+  background-color: rgba(48, 24, 59, 0.788);
 }

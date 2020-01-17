@@ -4,7 +4,7 @@
 
 .comment {
     margin-bottom: 10px;
-    background-color: rgb(87, 55, 107);
+    background-color: rgba(48, 24, 59, 0.788);
     padding: 10px;
     margin: 10px;
     white-space: pre-line;
@@ -27,7 +27,13 @@
 }
 
 .add-comment-btn {
+    width: 14%;
     border-radius: 20px;
+}
+
+.add-comment-btn:hover {
+    color: white;
+    background-color: rgba(48, 24, 59, 0.788);
 }
 
 .comments {
