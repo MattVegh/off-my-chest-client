@@ -3,6 +3,7 @@ import './Comments.css'
 
 export default class Comments extends Component {
     state = {
+        displayContent: '',
         content: '',
         post_id: '',
 
@@ -12,6 +13,7 @@ export default class Comments extends Component {
     handleComment = (event) => {
         let postId = parseInt(this.props.match.params.postId)
         this.setState({
+            displayContent: event.target.value,
             content: event.target.value,
             post_id: postId
         })
@@ -47,7 +49,7 @@ export default class Comments extends Component {
         // let inputField = document.getElementsByClassName('comment-input')
         // inputField.reset()
         this.setState({
-            content: ''
+            displayContent: ''
         })
     }
 
@@ -62,7 +64,7 @@ export default class Comments extends Component {
         return (
             <div className='comments-container'>
                 <div className='add-comment-container'>
-                    <textarea type='text' className='comment-input' value={this.state.content} onChange={this.handleComment} />
+                    <textarea type='text' className='comment-input' value={this.state.displayContent} onChange={this.handleComment} />
                     <button className='add-comment-btn' onClick={() => this.postComment()}>Add Comment</button>
 
                 </div>
