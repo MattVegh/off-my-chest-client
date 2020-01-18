@@ -38,17 +38,11 @@ export default class NewPost extends Component {
                     : res.json()
             )
             .then((post) => {
-                console.log('postpost', post)
-
-                // this.setState({
-                //     newPost: post
-                // })
                 this.props.handleNewPost(post)
 
                 this.props.history.push(`/posts/${post[0].id}`)
             })
             .catch(error => console.log(error))
-        // .then(this.sendToHome)
     }
 
     sendToHome = () => {

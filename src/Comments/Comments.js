@@ -52,12 +52,7 @@ export default class Comments extends Component {
     }
 
     render() {
-        console.log('state in comments', this.state)
-        console.log('from comments', this.props)
-        // console.log('comments match', this.props.match)
         const postComments = this.props.comments.filter(comments => comments.post_id === parseInt(this.props.match.params.postId))
-
-        console.log('postcomments', postComments)
 
         return (
             <div className='comments-container'>

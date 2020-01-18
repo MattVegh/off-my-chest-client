@@ -8,10 +8,6 @@ import NewPost from './NewPost/NewPost'
 
 
 class App extends Component {
-  // state = {
-  //   posts: sampleData.posts,
-  //   comments: sampleData.comments
-  // }
 
   state = {
     posts: [],
@@ -42,7 +38,6 @@ class App extends Component {
   }
 
   handleNewPost = (newPost) => {
-    console.log('newpost from app', newPost)
     this.setState({
       posts: newPost
     })
@@ -50,8 +45,6 @@ class App extends Component {
   }
 
   render() {
-
-    console.log('from app', this.state)
 
     return (
       <div className="App">

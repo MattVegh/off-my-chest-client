@@ -36,10 +36,7 @@ export default class AllPosts extends Component {
     render() {
 
         let posts = this.state.posts
-        console.log('posts', posts)
-
-        console.log('all posts state', this.state)
-
+        
         return (
             <div className='all-posts-container'>
                 <div className='intro-container'>
