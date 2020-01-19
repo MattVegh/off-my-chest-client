@@ -6,7 +6,7 @@
     margin-bottom: 10px;
     background-color: rgba(48, 24, 59, 0.788);
     padding: 10px;
-    margin: 10px;
+    
     white-space: pre-line;
 }
 
@@ -22,12 +22,11 @@
 }
   
 .comment-input {
-    width: 500px;
+    width: 90%;
     height: 85px;
 }
 
 .add-comment-btn {
-    width: 14%;
     border-radius: 20px;
 }
 

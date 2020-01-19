@@ -1,5 +1,5 @@
 .exact-post-container {
-    width: 95%;
+    width: 90%;
     font-family: 'Nunito', sans-serif;
     margin: auto;
     margin-bottom: 20px;
@@ -7,6 +7,12 @@
     -webkit-box-shadow: inset 0 0 5px rgb(120, 98, 153);
     box-shadow:         inset 0 0 5px rgb(120, 98, 153);
     padding: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .exact-post-container {
+        width: 95%
+    }
 }
 
 .post-content {
