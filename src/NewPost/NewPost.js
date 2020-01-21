@@ -54,16 +54,19 @@ export default class NewPost extends Component {
 
     render() {
 
+        const { title, content } = this.state
+        const isEnabled = title.length > 0 && content.length > 0
+
         return (
             <div className='form-container'>
-                <form className='new-post-form'>
-                    <div className='new-post-container'>
+                <form className='new-post-form' >
+                    <div className='new-post-container' >
                         <label htmlFor='new-post-title' >Title: </label>
                         <textarea type='text' className='new-post-title' onChange={this.handleTitle} />
                         <label htmlFor='new-post-content' >Content: </label>
                         <textarea type='text' className='new-post-content' onChange={this.handleContent} />
                     </div>
-                    <button className='post-btn' onClick={(event) => this.postPost(event)}>Post</button>
+                    <button disabled={!isEnabled} className='post-btn' onClick={(event) => this.postPost(event)}>Post</button>
                 </form>
             </div>
         )
