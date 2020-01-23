@@ -4,7 +4,8 @@ import './NewPost.css'
 export default class NewPost extends Component {
     state = {
         title: '',
-        content: ''
+        content: '',
+        hidden: 'hidden'
     }
 
     handleTitle = (event) => {
@@ -50,13 +51,16 @@ export default class NewPost extends Component {
         this.props.history.push(`/posts/${this.state.newPost[0].id}`)
     }
 
-
+    removeHidden = (event) => {
+        event.preventDefault()
+        this.setState({
+            hidden: 'not-hidden'
+        })
+        
+    }
 
     render() {
-
-        const { title, content } = this.state
-        const isEnabled = title.length > 0 && content.length > 0
-
+        
         return (
             <div className='form-container'>
                 <form className='new-post-form' >
@@ -66,7 +70,11 @@ export default class NewPost extends Component {
                         <label htmlFor='new-post-content' >Content: </label>
                         <textarea type='text' className='new-post-content' onChange={this.handleContent} />
                     </div>
-                    <button disabled={!isEnabled} className='post-btn' onClick={(event) => this.postPost(event)}>Post</button>
+                    {this.state.title  === '' || this.state.content === ''
+                    ? <button className='post-btn' onClick={(event) => this.removeHidden(event)}>Post</button> 
+                    : <button className='post-btn' onClick={(event) => this.postPost(event)}>Post</button>}
+                    <div className={this.state.hidden} >Please fill out the title and content boxes</div>
+                    
                 </form>
             </div>
         )

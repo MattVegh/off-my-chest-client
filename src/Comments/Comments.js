@@ -6,6 +6,7 @@ export default class Comments extends Component {
         displayContent: '',
         content: '',
         post_id: '',
+        hidden: 'hidden'
 
     }
 
@@ -51,17 +52,25 @@ export default class Comments extends Component {
         })
     }
 
+    removeHidden = () => {
+        
+        this.setState({
+            hidden: 'not-hidden'
+        })
+        
+    }
+
     render() {
         const postComments = this.props.comments.filter(comments => comments.post_id === parseInt(this.props.match.params.postId))
-
-        const { displayContent, content } = this.state
-        const isEnabled = displayContent.length > 0 && content.length > 0
 
         return (
             <div className='comments-container'>
                 <div className='add-comment-container'>
                     <textarea type='text' className='comment-input' value={this.state.displayContent} onChange={this.handleComment} />
-                    <button disabled={!isEnabled} className='add-comment-btn' onClick={() => this.postComment()}>Add Comment</button>
+                    {this.state.content === '' 
+                    ? <button className='add-comment-btn' onClick={() => this.removeHidden()}>Add Comment</button> 
+                    : <button className='add-comment-btn' onClick={() => this.postComment()}>Add Comment</button> }
+                    <div className={this.state.hidden} >Please input some content</div>
 
                 </div>
                 <div className='comments'>
