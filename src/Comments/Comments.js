@@ -43,14 +43,8 @@ export default class Comments extends Component {
             .then(res =>
                 (!res.ok)
                     ? res.json().then(e => Promise.reject('e', e))
-                    // : res.json().then(this.setState({
-                    //     comments: {...this.state.comments, }
-                    // }))
                     : res.json().then(newComment => {
                         const comments = [...this.state.comments, ...newComment]
-                        console.log('comments', comments)
-                        console.log('this state comments', this.state.comments)
-                        console.log('newComment', newComment)
                         this.setState({ comments })
                     })
             )
@@ -77,9 +71,6 @@ export default class Comments extends Component {
 
     render() {
         const postComments = this.state.comments
-        console.log('comments state', this.state.comments)
-        console.log('post comments', postComments)
-
 
         return (
             <div className='comments-container'>
@@ -92,7 +83,6 @@ export default class Comments extends Component {
 
                 </div>
                 <div className='comments'>
-                    {/* {!this.state.newComment ? <div></div> : <p className='comment' >{this.state.newComment}</p>} */}
                     {postComments && postComments.slice(0).reverse().map(comments =>
                         <p className='comment' key={comments.id}>{comments.content}</p>
                     )}
