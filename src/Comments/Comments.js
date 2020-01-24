@@ -47,8 +47,10 @@ export default class Comments extends Component {
                     //     comments: {...this.state.comments, }
                     // }))
                     : res.json().then(newComment => {
-                        const comments = [...this.state.comments, newComment];
-                        console.log(comments)
+                        const comments = [...this.state.comments, ...newComment]
+                        console.log('comments', comments)
+                        console.log('this state comments', this.state.comments)
+                        console.log('newComment', newComment)
                         this.setState({ comments })
                     })
             )
