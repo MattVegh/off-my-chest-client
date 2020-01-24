@@ -6,10 +6,17 @@ export default class Comments extends Component {
         displayContent: '',
         content: '',
         post_id: '',
-        hidden: 'hidden'
+        hidden: 'hidden',
+        
 
     }
 
+    componentDidMount() {
+        const postComments = this.props.comments.filter(comments => 
+                comments.post_id === parseInt(this.props.match.params.postId))
+
+        this.setState({comments: postComments})
+    }
 
     handleComment = (event) => {
         let postId = parseInt(this.props.match.params.postId)
@@ -61,7 +68,9 @@ export default class Comments extends Component {
     }
 
     render() {
-        const postComments = this.props.comments.filter(comments => comments.post_id === parseInt(this.props.match.params.postId))
+        const postComments = this.state.comments
+        console.log('comments props', this.props.comments)
+        console.log('comments state', this.state.comments)
 
         return (
             <div className='comments-container'>
