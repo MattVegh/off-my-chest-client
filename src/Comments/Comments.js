@@ -7,15 +7,15 @@ export default class Comments extends Component {
         content: '',
         post_id: '',
         hidden: 'hidden',
-        
+
 
     }
 
     componentDidMount() {
-        const postComments = this.props.comments.filter(comments => 
-                comments.post_id === parseInt(this.props.match.params.postId))
+        const postComments = this.props.comments.filter(comments =>
+            comments.post_id === parseInt(this.props.match.params.postId))
 
-        this.setState({comments: postComments})
+        this.setState({ comments: postComments })
     }
 
     handleComment = (event) => {
@@ -30,7 +30,7 @@ export default class Comments extends Component {
 
     postComment = () => {
         // fetch(`http://localhost:8000/comments`, {
-            fetch('https://off-my-chest-api.herokuapp.com/comments', {
+        fetch('https://off-my-chest-api.herokuapp.com/comments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -46,14 +46,17 @@ export default class Comments extends Component {
                     // : res.json().then(this.setState({
                     //     comments: {...this.state.comments, }
                     // }))
-                    : res.json().then(newComment => this.setState({
-                        comments: [...this.state.comments, newComment]
-                    }))
+                    : res.json().then(newComment => {
+                        const comments = [...this.state.comments, newComment];
+                        console.log(comments)
+                        this.setState({ comments })
+                    })
             )
+
             .catch(error => console.log(error))
 
-            this.clearCommentInput()
-            
+        this.clearCommentInput()
+
     }
 
     clearCommentInput() {
@@ -63,11 +66,11 @@ export default class Comments extends Component {
     }
 
     removeHidden = () => {
-        
+
         this.setState({
             hidden: 'not-hidden'
         })
-        
+
     }
 
     render() {
@@ -75,13 +78,14 @@ export default class Comments extends Component {
         console.log('comments state', this.state.comments)
         console.log('post comments', postComments)
 
+
         return (
             <div className='comments-container'>
                 <div className='add-comment-container'>
                     <textarea type='text' className='comment-input' value={this.state.displayContent} onChange={this.handleComment} />
-                    {this.state.content === '' 
-                    ? <button className='add-comment-btn' onClick={() => this.removeHidden()}>Add Comment</button> 
-                    : <button className='add-comment-btn' onClick={() => this.postComment()}>Add Comment</button> }
+                    {this.state.content === ''
+                        ? <button className='add-comment-btn' onClick={() => this.removeHidden()}>Add Comment</button>
+                        : <button className='add-comment-btn' onClick={() => this.postComment()}>Add Comment</button>}
                     <div className={this.state.hidden} >Please input some content</div>
 
                 </div>
