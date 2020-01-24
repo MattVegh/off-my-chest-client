@@ -47,7 +47,7 @@ export default class Comments extends Component {
                     //     comments: {...this.state.comments, }
                     // }))
                     : res.json().then(newComment => this.setState({
-                        comments: {...this.state.comments, newComment}
+                        comments: [...this.state.comments, newComment]
                     }))
             )
             .catch(error => console.log(error))
@@ -72,7 +72,6 @@ export default class Comments extends Component {
 
     render() {
         const postComments = this.state.comments
-        console.log('comments props', this.props.comments)
         console.log('comments state', this.state.comments)
         console.log('post comments', postComments)
 
